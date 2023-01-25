@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 mongoose
-  .connect("mongodb://127.0.0.1/weMet", {
+  .connect("mongodb://127.0.0.1/ConsultingSys", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

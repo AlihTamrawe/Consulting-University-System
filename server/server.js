@@ -1,99 +1,27 @@
-const express = require("express");
-const cors = require("cors");
+
+
+const express = require('express');
+const cors = require('cors');
 const app = express();
-const cookieSession = require("cookie-session");
-const oauth2 = require("./routes/oauth2");
-const passport = require("passport");
-require("./passport");
-require("./config/mongoose.config");
-require("dotenv").config();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(
-  cookieSession({
-    name: "session",
-    keys: ["mob"],
-    maxAge: 24 * 60 * 60 * 100,
-    // maxAge: 5,
-  })
+app.use(cors());
+app.use(express.json()); // This is new
+app.use(express.urlencoded({ extended: true })); // This is new
+const server = app.listen(8000, () =>
+  console.log('The server is all fired up on port 8000')
 );
-const postRouter =require("./routes/posts.routs");
+ 
+const io = require('socket.io')(server, { cors: true });
 
-const appRouter = require("./routes/app.routs");
-const chatRouter = require("./routes/chatRoutes");
-const messageRouter = require("./routes/messageRoutes");
-const notificationRouter = require("./routes/notificationRoutes");
-const groupRouter = require("./routes/group.routs");
-const { errorHandler, routeNotFound } = require("./middleware/errorMiddleware");
-app.use(cors({
-  origin:'http://localhost:3000',
-  methods:'GET,POST,PUT,DELETE',
-  credentials:true,
-}))
-app.use(passport.initialize());
-app.use(passport.session());
-app.use("/api/chats", chatRouter);
-app.use("/api", appRouter);
-app.use("/api/messages", messageRouter);
-app.use("/api/notification", notificationRouter);
-app.use("/api/group", groupRouter);
-app.use("/auth", oauth2);
-app.use("/api", postRouter);
-
-
-
-// const cookieparser = require("cookie-parser");
-// app.use(cookieparser());
-
-
-
-const PORT = process.env.PORT || 8000;
-
-const server = app.listen(PORT, () => {
-  console.log(`Listening at Port ${PORT}`);
-});
-
-
-
-app.use(routeNotFound);
-app.use(errorHandler);
-// Chat App
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  },
-});
-
-io.on("connection", (socket) => {
-  console.log("Sockets are in action");
-  socket.on("setup", (userData) => {
-    socket.join(userData._id);
-    console.log(userData.name, "connected");
-    socket.emit("connected");
-  });
-  socket.on("join chat", (room) => {
-    socket.join(room);
-    console.log("User joined room: " + room);
-  });
-  socket.on("new message", (newMessage) => {
-    var chat = newMessage.chatId;
-    if (!chat.users) return console.log("chat.users not defined");
-
-    chat.users.forEach((user) => {
-      if (user._id === newMessage.sender._id) return;
-      socket.in(user._id).emit("message received", newMessage);
+io.on("connection",socket=>{
+    // console.log(socket.id)
+    socket.on('text',data=>{
+        io.emit('text',data);
+        console.log(data)
     });
-    socket.on("typing", (room) => {
-      socket.in(room).emit("typing");
-    });
-    socket.on("stop typing", (room) => {
-      socket.in(room).emit("stop typing");
-    });
-  });
-  socket.off("setup", () => {
-    console.log("USER DISCONNECTED");
-    socket.leave(userData._id);
-  });
-});
+})
+// require('./config/mongoose.config'); //copy This is new
+
+// app.listen(8000, () => {
+//     console.log("Listening at Port 8000")
+// })
+

@@ -1,37 +1,18 @@
-import { Box } from "@mui/material";
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import {
-  Comments,
-  Groups,
-  GroupPost,
-  Login,
-  Register,
-  Dashboard,
-} from "./views";
-import ChatPage from "./components/Chat/pages/ChatPage";
+import React from 'react';
+import {Routes, Route, Link } from 'react-router-dom';
+import Dashboard from './views/Dashboard';
 
-import { useAuthContext } from "./hooks/useAuthContext";
-function App() {
-  const { user } = useAuthContext();
-
+export default function App() {
   return (
-    <Box>
-      <Navbar />
-      <Routes>
-        <Route path={`/`} element={<Dashboard />} />
-        <Route path={`/chats`} element={<ChatPage />} />
-        <Route path={`/groups`} element={<Groups />} />
-        <Route path={`/group/:id/posts`} element={<GroupPost />} />
-        <Route path={`/post/:id`} element={user ? <Comments /> : <Login />} />
-        <Route
-          path={`/register`}
-          element={!user ? <Register /> : <Dashboard />}
-        />
-        <Route path={`/login`} element={!user ? <Login /> : <Dashboard />} />
-      </Routes>
-    </Box>
+      <div>
+        <div>
+        <Dashboard x="no"/>
+  
+        </div>
+        <Routes>
+        <Route path={"/s"} element={<Dashboard x="weeeeeeeee"/>} />
+</Routes>    
+     
+    </div>
   );
 }
-
-export default App;
