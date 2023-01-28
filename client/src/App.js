@@ -1,12 +1,13 @@
 import React from 'react';
 import {Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './views/Dashboard';
+import Navbar from './views/Navbar';
 
 export default function App() {
   return (
       <div>
         <div>
-        <Dashboard x="no"/>
+        <Navbar/>
   
         </div>
         <Routes>
