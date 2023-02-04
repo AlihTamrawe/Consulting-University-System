@@ -60,7 +60,7 @@ const Navbar = () => {
               cursor: 'pointer',
             }}
           >
-            we<span style={{ color: '#CFA76E', fontFamily: 'Nunito' }} onClick={() => navigate('/')}>Met</span>
+            CUS<span style={{ color: '#CFA76E', fontFamily: 'Nunito' }} onClick={() => navigate('/')}>Co.</span>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -150,6 +150,37 @@ const Navbar = () => {
               anchorOrigin={{
                 vertical: 'top',
                 horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem onClick={handleCloseUserMenu}>
+               
+                  <Typography textAlign="center" onClick={handleLogout}>Logout</Typography>
+                  :
+                  <Typography textAlign="center" onClick={() => navigate('/login')}>Login</Typography>
+              </MenuItem>
+            </Menu>
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="MB" src={photo} />
+
+              </IconButton>
+            </Tooltip>
+              <Menu
+              sx={{ mt: '30px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
               }}
               keepMounted
               transformOrigin={{
