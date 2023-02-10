@@ -13,7 +13,7 @@ export default function App() {
 
         </div>
         <Routes>
-        <Route path={"/s"} element={<Dashboard x="weeeeeeeee"/>} />
+        <Route path={"/s"} element={<Dashboard x="Consulting"/>} />
 </Routes>    
      
     </div>
