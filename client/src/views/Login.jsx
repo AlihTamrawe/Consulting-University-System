@@ -7,7 +7,7 @@ import { Container } from '@mui/material'
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { useAuthContext } from '../hooks/useAuthContext'
+// import { useAuthContext } from '../hooks/useAuthContext'
 // import social2 from '../utils/social2.jpg'
 
 const Login = () => {
@@ -15,72 +15,72 @@ const Login = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const { dispatch } = useAuthContext()
+    // const { dispatch } = useAuthContext()
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post(`http://localhost:8000/api/login`, { email, password })
-            .then((res) => {
-                localStorage.setItem('user', JSON.stringify(res.data));
-                dispatch({ type: 'LOGIN', payload: res.data })
-                navigate(`/`)
-            })
-            .catch(err => {
-                setBackendErrors(err.response.data.error)
-            })
+        // axios.post(`http://localhost:8000/api/login`, { email, password })
+        //     .then((res) => {
+        //         localStorage.setItem('user', JSON.stringify(res.data));
+        //         dispatch({ type: 'LOGIN', payload: res.data })
+        //         navigate(`/`)
+        //     })
+        //     .catch(err => {
+        //         setBackendErrors(err.response.data.error)
+        //     })
     }
-    const google = () => {
-        window.open("http://localhost:8000/auth/google", "_self")
-        const getUser = () => {
-            fetch("http://localhost:8000/auth/login/success", {
-                method: "GET",
-                credentials: "include",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
-            })
-                .then((res) => {
-                    if (res.status === 200) return res.json();
-                    // throw new Error("Authentication has been failed");
-                })
-                .then((resObject) => {
-                    dispatch({ type: "LOGIN", payload: resObject.user });
-                    localStorage.setItem("user", JSON.stringify(resObject.user));
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        };
-        getUser();
+    // const google = () => {
+    //     window.open("http://localhost:8000/auth/google", "_self")
+    //     const getUser = () => {
+    //         fetch("http://localhost:8000/auth/login/success", {
+    //             method: "GET",
+    //             credentials: "include",
+    //             headers: {
+    //                 Accept: "application/json",
+    //                 "Content-Type": "application/json",
+    //                 "Access-Control-Allow-Credentials": true,
+    //             },
+    //         })
+    //             .then((res) => {
+    //                 if (res.status === 200) return res.json();
+    //                 // throw new Error("Authentication has been failed");
+    //             })
+    //             .then((resObject) => {
+    //                 dispatch({ type: "LOGIN", payload: resObject.user });
+    //                 localStorage.setItem("user", JSON.stringify(resObject.user));
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err);
+    //             });
+    //     };
+    //     getUser();
 
-    }
-    const github = () => {
-        window.open("http://localhost:8000/auth/github", "_self")
-        const getUser = () => {
-            fetch("http://localhost:8000/auth/login/success", {
-                method: "GET",
-                credentials: "include",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
-            })
-                .then((res) => {
-                    if (res.status === 200) return res.json();
-                    // throw new Error("Authentication has been failed");
-                })
-                .then((resObject) => {
-                    dispatch({ type: "LOGIN", payload: resObject.user });
-                    localStorage.setItem("user", JSON.stringify(resObject.user));
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        };
-        getUser();
-    }
+    // }
+    // const github = () => {
+    //     window.open("http://localhost:8000/auth/github", "_self")
+    //     const getUser = () => {
+    //         fetch("http://localhost:8000/auth/login/success", {
+    //             method: "GET",
+    //             credentials: "include",
+    //             headers: {
+    //                 Accept: "application/json",
+    //                 "Content-Type": "application/json",
+    //                 "Access-Control-Allow-Credentials": true,
+    //             },
+    //         })
+    //             .then((res) => {
+    //                 if (res.status === 200) return res.json();
+    //                 // throw new Error("Authentication has been failed");
+    //             })
+    //             .then((resObject) => {
+    //                 dispatch({ type: "LOGIN", payload: resObject.user });
+    //                 localStorage.setItem("user", JSON.stringify(resObject.user));
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err);
+    //             });
+    //     };
+    //     getUser();
+    // }
     const theme = createTheme();
     return (
         <Box
@@ -154,7 +154,7 @@ const Login = () => {
                             >
                                 Log In
                             </Button>
-                            <Button
+                            {/* <Button
                                 fullWidth
                                 onClick={google}
                                 variant="outlined"
@@ -173,7 +173,7 @@ const Login = () => {
                                 sx={{ mt: 1, mb: 3 }}
                             >
                                 Continue with GitHub
-                            </Button>
+                            </Button> */}
                             <Grid container>
                                 <Grid item xs>
                                     <Link href="#" variant="body2">
