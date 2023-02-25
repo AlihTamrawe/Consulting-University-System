@@ -42,7 +42,7 @@ const Navbar = () => {
    
     
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#883970' }}>
+    <AppBar position="relative" top="20" sx={{ backgroundColor: '#883D5E' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <HandshakeIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
