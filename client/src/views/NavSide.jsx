@@ -36,6 +36,7 @@ const NavSide = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+    navigate("\s");
   };
   var photo = ""
  
@@ -60,10 +61,10 @@ const NavSide = () => {
               cursor: 'pointer',
             }}
           >
-            CUS<span style={{ color: '#CFA76E', fontFamily: 'Nunito' }} onClick={() => navigate('/')}>Co.</span>
+            CUS<span style={{ color: '#CFF76E', fontFamily: 'Nunito' }} onClick={() => navigate('/')}>Co.</span>
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 2, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
