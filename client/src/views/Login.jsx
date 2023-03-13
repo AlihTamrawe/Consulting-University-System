@@ -117,7 +117,7 @@ const Login = () => {
                             component='form'
                             onSubmit={handleSubmit}
                             noValidate
-                            sx={{ mt: 1 }}
+                            sx={{ mt: 2 }}
                         >
                             <Typography component="h1" variant="h5">
                                 {/* {backendErrors.map((err, i) => <p style={{ color: 'red', textAlign: 'center' }} key={i}>{err ? err : null}</p>)} */}
@@ -138,7 +138,7 @@ const Login = () => {
                                 margin="normal"
                                 // required
                                 onChange={(e) => setPassword(e.target.value)}
-                                type='password'
+                                type='text'
                                 fullWidth
                                 label="Password"
                                 placeholder='Enter password...'

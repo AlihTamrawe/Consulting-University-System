@@ -21,7 +21,7 @@ export default function App() {
         <Route path={"/s"} element={<Dashboard x="Consulting"/>} />
         <Route path={"/login"} element={ <MainC  /> } />
         <Route path={"/reg"} element={<Register x="Consulting"/>} />
-        <Route path={"/i"} element={<Login x="Consulting"/>} />
+        <Route path={"/consult"} element={<Login x="Consulting"/>} />
 
 </Routes>    
      
