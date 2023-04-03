@@ -11,11 +11,13 @@ import Register from './views/Register';
 
 export default function App() {
   return (
-      <div>
+      <div>  
+
+
         <NavSide/>
         <div>
         <Navbar/>
-
+   <Navbar/>
         </div>
         <Routes>
         <Route path={"/s"} element={<Dashboard x="Consulting"/>} />
