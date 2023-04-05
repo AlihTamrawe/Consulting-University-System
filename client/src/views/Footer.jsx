@@ -11,7 +11,11 @@ const Footer = (props) => {
      return (
         <footer className='top'>
             <img src=''/>
-          
+            <div className="links">
+                <div>
+                    <h2>Platform</h2>
+                </div>
+            </div>
        
          
                 <h2  >Dive into our community ! {props.x}</h2>
