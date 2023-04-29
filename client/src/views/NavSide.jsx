@@ -63,7 +63,7 @@ const NavSide = () => {
           >
             CUS<span style={{ color: '#CFF76E', fontFamily: 'Nunito' }} onClick={() => navigate('/')}>Co.</span>
           </Typography>
-
+            
           <Box sx={{ flexGrow: 2, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
